@@ -30,3 +30,27 @@ def getHash(vote, prev='6dd24e2f5bbd2c34edc78e6075d3dca41a9a8930679c7adb7fd1f368
     final_str = str1 + "," + str2 + "," + str3 + "," + str4 + "," + str5 + "," + str6
     x = Block(prev, final_str)
     return [x.block_hash, x.transactions]
+
+
+def getArr(string):
+    string = string[2:-2]
+    res = []
+    for i in string:
+        if not i == ',':
+            res.append(int(i))
+    return res
+
+
+def addSum(arr):
+    res = [0, 0, 0, 0, 0, 0]
+    for i in arr:
+        for j in range(6):
+            res[j] += i[j]
+    return res
+
+
+def calculate(obj):
+    arr = []
+    for i in obj:
+        arr.append(getArr(i.trans))
+    return addSum(arr)

@@ -1,7 +1,7 @@
 from django.shortcuts import redirect, render
 from django.contrib import messages
 from .models import Hash
-from .function import getHash
+from .function import addSum, calculate, getHash
 
 
 def vote(request):
@@ -33,5 +33,7 @@ def process(request, value):
 
 
 def result(request):
-    context = {'arr': []}
+    x = calculate(Hash.objects.all())
+    context = {'a': x[0], 'b': x[1], 'c': x[2],
+               'd': x[3], 'e': x[4], 'f': x[5]}
     return render(request, 'voting/results.html', context)
