@@ -1,2 +1,2 @@
 release: python manage.py migrate
-web: gunicorn cipher.wsgi
+web: gunicorn bitbox.wsgi
